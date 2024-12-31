@@ -5,66 +5,37 @@ import AlbumItem from "../components/AlbumItem";
 import SongItem from "../components/SongItem";
 
 const Home = () => {
-  const { songs, albums, loading, error } = SongData();
-
-  if (loading) {
-    return (
-      <Layout>
-        <p className="text-center text-gray-500">Loading...</p>
-      </Layout>
-    );
-  }
-
-  if (error) {
-    return (
-      <Layout>
-        <p className="text-center text-red-500">Failed to load data. Please try again later.</p>
-      </Layout>
-    );
-  }
-
+  const { songs, albums } = SongData();
   return (
     <Layout>
-      {/* Featured Charts Section */}
       <div className="mb-4">
         <h1 className="my-5 font-bold text-2xl">Featured Charts</h1>
-        {albums?.length > 0 ? (
-          <div className="flex overflow-auto gap-x-4">
-            {albums.map((e) => (
-              <AlbumItem
-                key={e._id}
-                image={e.thumbnail?.url || "/placeholder-album.png"}
-                name={e.title}
-                desc={e.description}
-                id={e._id}
-                alt={`Album cover for ${e.title}`}
-              />
-            ))}
-          </div>
-        ) : (
-          <p className="text-gray-500">No albums available</p>
-        )}
+        <div className="flex overflow-auto">
+          {albums.map((e, i) => (
+            <AlbumItem
+              key={i}
+              image={e.thumbnail.url}
+              name={e.title}
+              desc={e.description}
+              id={e._id}
+            />
+          ))}
+        </div>
       </div>
 
-      {/* Today's Biggest Hits Section */}
       <div className="mb-4">
-        <h1 className="my-5 font-bold text-2xl">Today's Biggest Hits</h1>
-        {songs?.length > 0 ? (
-          <div className="flex overflow-auto gap-x-4">
-            {songs.map((e) => (
-              <SongItem
-                key={e._id}
-                image={e.thumbnail?.url || "/placeholder-song.png"}
-                name={e.title}
-                desc={e.description}
-                id={e._id}
-                alt={`Song cover for ${e.title}`}
-              />
-            ))}
-          </div>
-        ) : (
-          <p className="text-gray-500">No songs available</p>
-        )}
+        <h1 className="my-5 font-bold text-2xl">Today's biggest hits</h1>
+        <div className="flex overflow-auto">
+          {songs.map((e, i) => (
+            <SongItem
+              key={i}
+              image={e.thumbnail.url}
+              name={e.title}
+              desc={e.description}
+              id={e._id}
+            />
+          ))}
+        </div>
       </div>
     </Layout>
   );

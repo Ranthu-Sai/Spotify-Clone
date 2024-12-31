@@ -9,8 +9,8 @@ const AlbumItem = ({ image, name, desc, id }) => {
       className="min-w-[180px] p-2 px-3 rounded cursor-pointer hover:bg-[#ffffff26]"
     >
       <img src={image} className="rounded w-[160px]" alt="" />
-      <div className="font-bold mt-2 mb-1">{name.slice(0, 12)}..</div>
-      <div className="text-slate-200 text-sm">{desc.slice(0, 18)}..</div>
+      <p className="font-bold mt-2 mb-1">{name.slice(0, 12)}..</p>
+      <p className="text-slate-200 text-sm">{desc.slice(0, 18)}..</p>
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react"; 
+import React, { useEffect, useRef, useState } from "react";
 import { SongData } from "../context/Song";
 import { GrChapterNext, GrChapterPrevious } from "react-icons/gr";
 import { FaPause, FaPlay } from "react-icons/fa";
@@ -32,7 +32,7 @@ const Player = () => {
   const [volume, setVolume] = useState(1);
 
   const handleVolumeChange = (e) => {
-    const newVolume = Math.max(0, Math.min(1, e.target.value)); // Ensure volume is between 0 and 1
+    const newVolume = e.target.value;
     setVolume(newVolume);
     audioRef.current.volume = newVolume;
   };
@@ -46,11 +46,19 @@ const Player = () => {
     if (!audio) return;
 
     const handleLoadedMetaData = () => {
-      setDuration(audio.duration);
+      if (audio.duration && !isNaN(audio.duration)) {
+        setDuration(audio.duration);
+      } else {
+        setDuration(0); // Ensure valid duration
+      }
     };
 
     const handleTimeUpdate = () => {
-      setProgress(audio.currentTime);
+      if (audio.currentTime && !isNaN(audio.currentTime)) {
+        setProgress(audio.currentTime);
+      } else {
+        setProgress(0); // Ensure valid progress
+      }
     };
 
     audio.addEventListener("loadedmetadata", handleLoadedMetaData);
@@ -90,7 +98,13 @@ const Player = () => {
 
           <div className="flex flex-col items-center gap-1 m-auto">
             {song && song.audio && (
-              <audio ref={audioRef} src={song.audio.url} autoPlay={isPlaying} />
+              <>
+                {isPlaying ? (
+                  <audio ref={audioRef} src={song.audio.url} autoPlay />
+                ) : (
+                  <audio ref={audioRef} src={song.audio.url} />
+                )}
+              </>
             )}
 
             <div className="w-full flex items-center font-thin text-green-400">
@@ -99,7 +113,7 @@ const Player = () => {
                 min={"0"}
                 max={"100"}
                 className="progress-bar w-[120px] md:w-[300px]"
-                value={duration > 0 ? (progress / duration) * 100 : 0} // Prevent NaN
+                value={duration > 0 ? (progress / duration) * 100 : 0} // Prevent NaN by checking if duration > 0
                 onChange={handleProgressChange}
               />
             </div>
@@ -119,6 +133,7 @@ const Player = () => {
               </span>
             </div>
           </div>
+
           <div className="flex items-center">
             <input
               type="range"

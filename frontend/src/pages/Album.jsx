@@ -31,7 +31,6 @@ const Album = () => {
   const savePlayListHandler = (id) => {
     addToPlaylist(id);
   };
-
   return (
     <Layout>
       {albumData && (
@@ -90,20 +89,20 @@ const Album = () => {
                 <p className="text-[15px] hidden sm:block">
                   {e.description.slice(0, 20)}...
                 </p>
-                <div className="flex justify-center items-center gap-5">
-                  <span
-                    className="text-[15px] text-center cursor-pointer"
+                <p className="flex justify-center items-center gap-5">
+                  <p
+                    className="text-[15px] text-center"
                     onClick={() => savePlayListHandler(e._id)}
                   >
                     <FaBookmark />
-                  </span>
-                  <span
-                    className="text-[15px] text-center cursor-pointer"
+                  </p>
+                  <p
+                    className="text-[15px] text-center"
                     onClick={() => onclickHander(e._id)}
                   >
                     <FaPlay />
-                  </span>
-                </div>
+                  </p>
+                </p>
               </div>
             ))}
         </>

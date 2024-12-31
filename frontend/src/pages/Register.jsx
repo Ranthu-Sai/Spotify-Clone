@@ -19,7 +19,6 @@ const Register = () => {
 
     registerUser(name, email, password, navigate, fetchSongs, fetchAlbums);
   };
-
   return (
     <div className="flex items-center justify-center h-screen max-h-screen">
       <div className="bg-black text-white p-8 rounded-lg shadow-lg max-w-md w-full">
@@ -76,7 +75,7 @@ const Register = () => {
             to="/login"
             className="text-sm text-gray-400 hover:text-gray-300"
           >
-            Have an account?
+            have accont?
           </Link>
         </div>
       </div>

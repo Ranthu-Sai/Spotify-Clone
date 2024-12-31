@@ -24,36 +24,36 @@ const Navbar = () => {
           />
         </div>
         <div className="flex items-center gap-4">
-          <div className="bg-white text-black text-[15px] px-4 py-1 rounded-2xl hidden md:block cursor-pointer">
+          <p className="bg-white text-black text-[15px] px-4 py-1 rounded-2xl hidden md:block cursor-pointer">
             Explore Premium
-          </div>
-          <div className="bg-white text-black text-[15px] px-4 py-1 rounded-2xl hidden md:block cursor-pointer">
+          </p>
+          <p className="bg-white text-black text-[15px] px-4 py-1 rounded-2xl hidden md:block cursor-pointer">
             Install App
-          </div>
-          <div
+          </p>
+          <p
             className="bg-white text-black text-[15px] px-4 py-1 rounded-2xl cursor-pointer"
             onClick={logoutUser}
           >
             Logout
-          </div>
+          </p>
         </div>
       </div>
       <div className="flex items-center gap-2 mt-4">
-        <div className="bg-white text-black px-4 py-1 rounded-2xl cursor-pointer">
+        <p className="bg-white text-black px-4 py-1 rounded-2xl cursor-pointer">
           All
-        </div>
-        <div className="bg-black px-4 py-1 rounded-2xl cursor-pointer hidden md:block">
+        </p>
+        <p className="bg-black px-4 py-1 rounded-2xl cursor-pointer hidden md:block">
           Music
-        </div>
-        <div className="bg-black px-4 py-1 rounded-2xl cursor-pointer hidden md:block">
+        </p>
+        <p className="bg-black px-4 py-1 rounded-2xl cursor-pointer hidden md:block">
           Podcasts
-        </div>
-        <div
+        </p>
+        <p
           onClick={() => navigate("/playlist")}
-          className="bg-black px-4 py-1 rounded-2xl cursor-pointer md:hidden"
+          className="bg-black px-4 py-1 rounded-2xl cursor-pointer  md:hidden"
         >
           PlayList
-        </div>
+        </p>
       </div>
     </>
   );
