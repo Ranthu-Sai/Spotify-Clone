@@ -10,4 +10,7 @@ export default defineConfig({
       },
     },
   },
+  build: {
+    outDir: "public" // <-- Vercel expects 'public'
+  }
 });
